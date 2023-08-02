@@ -21,10 +21,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    
    if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(cargoLevel) === "Empty" || validateInput(fuelLevel) === "Empty"){
        alert("All fields are required!");
-   } else if(validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number"){
-       alert("Please enter a name for pilot and co-pilot.");
-   } else if(validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number"){
-       alert("Please enter a number for fuel level and cargo mass.");
+   } else if(validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number"){
+       alert("Please enter valid data type.");
    } else {
        list.style.visibility = "hidden";       
        pilotReady.innerHTML = `Pilot Ready`;
@@ -50,7 +48,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
           list.style.visibility = "visible";
        }
 
-       if(cargoLevel > 10000) {
+       if(cargoLevel >= 10000) {
           pilotReady.innerHTML = `Pilot ${pilot} is ready for launch`;
           copilotReady.innerHTML = `Co-pilot ${copilot} is ready for launch`;
           cargoReady.innerHTML = `Cargo mass too heavy for launch`;
